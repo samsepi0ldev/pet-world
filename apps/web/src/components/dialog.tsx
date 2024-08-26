@@ -4,12 +4,13 @@ import * as PrimitiveDialog from '@radix-ui/react-dialog'
 import React from 'react'
 
 import { cn } from '@/utils'
+import { X } from 'phosphor-react'
 
 const Dialog = PrimitiveDialog.Root
 const DialogTrigger = PrimitiveDialog.Trigger
 
 const DialogOverlay = () => (
-  <PrimitiveDialog.Overlay className='bg-black/5 backdrop-blur-md fixed inset-0' />
+  <PrimitiveDialog.Overlay className='bg-black/5 backdrop-blur-md fixed inset-0 data-[state=open]:animate-in data-[state=open]:fade-in data-[state=closed]:animate-out data-[state=closed]:fade-out' />
 )
 
 const DialogTitle = React.forwardRef<
@@ -53,10 +54,15 @@ const DialogContent = React.forwardRef<
     <PrimitiveDialog.Content
       className={cn(
         'fixed left-1/2 top-6 bottom-6 -translate-x-1/2 w-full max-w-lg bg-background-tertiary rounded-xl p-10',
+        'data-[state=open]:animate-in data-[state=open]:fade-in data-[state=open]:slide-in-from-left-1/2 data-[state=open]:zoom-in-95',
+        'data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:zoom-out-95',
         className
       )}
     >
       {children}
+      <PrimitiveDialog.Close className='size-9 absolute right-2 top-2 flex items-center justify-center text-content-secondary hover:text-content-primary transition-colors'>
+        <X className='size-5' />
+      </PrimitiveDialog.Close>
     </PrimitiveDialog.Content>
   </PrimitiveDialog.Portal>
 ))
