@@ -1,0 +1,13 @@
+{
+	"name": "pet-world",
+	"private": "true",
+	"scripts": {
+		"dev": "turbo run dev --parallel --",
+    "build": "turbo run build --",
+    "lint": "turbo run lint --"
+	},
+	"packageManager": "pnpm@9.8.0",
+	"dependencies": {
+		"turbo": "^2.0.14"
+	}
+}
