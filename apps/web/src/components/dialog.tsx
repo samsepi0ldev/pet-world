@@ -9,9 +9,6 @@ import { X } from 'phosphor-react'
 const Dialog = PrimitiveDialog.Root
 const DialogTrigger = PrimitiveDialog.Trigger
 
-const DialogOverlay = () => (
-  <PrimitiveDialog.Overlay className='bg-black/5 backdrop-blur-md fixed inset-0 data-[state=open]:animate-in data-[state=open]:fade-in data-[state=closed]:animate-out data-[state=closed]:fade-out' />
-)
 
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof PrimitiveDialog.Title>,
@@ -35,7 +32,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <PrimitiveDialog.Description
       className={cn(
-        'font-medium text-sm text-content-secondary leading-loose',
+        'font-medium text-sm text-content-secondary leading-relaxed',
         className
       )}
       ref={ref}
@@ -50,10 +47,10 @@ const DialogContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof PrimitiveDialog.Content>
 >(({ className, children, ...props }, ref) => (
   <PrimitiveDialog.Portal>
-    <DialogOverlay />
+    <PrimitiveDialog.Overlay className='bg-black/5 backdrop-blur-md fixed inset-0 data-[state=open]:animate-in data-[state=open]:fade-in data-[state=closed]:animate-out data-[state=closed]:fade-out' />
     <PrimitiveDialog.Content
       className={cn(
-        'fixed left-1/2 top-6 bottom-6 -translate-x-1/2 w-full max-w-lg bg-background-tertiary rounded-xl p-10',
+        'fixed left-1/2 top-6 bottom-6 -translate-x-1/2 w-11/12 max-w-lg bg-background-tertiary rounded-xl p-10',
         'data-[state=open]:animate-in data-[state=open]:fade-in data-[state=open]:slide-in-from-left-1/2 data-[state=open]:zoom-in-95',
         'data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:zoom-out-95',
         className
@@ -73,7 +70,6 @@ export {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogOverlay,
   DialogTitle,
   DialogTrigger
 }
